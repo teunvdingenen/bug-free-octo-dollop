@@ -23,22 +23,20 @@ const NEXT_MUTATION = gql`
 `;
 
 export default function Ticker({ match }) {
-  const { t } = match.params;
+  const { token, timer } = match.params;
   const {
     data, loading, error, refetch,
   } = useQuery(TICKER_QUERY, { variables: { count: 2 } });
-  const [doNext] = useMutation(NEXT_MUTATION, { variables: { token: t } });
+  const [doNext] = useMutation(NEXT_MUTATION, { variables: { token } });
 
   useInterval(() => {
-    doNext().then(({ data: { next } }) => {
-      if (next) {
-        refetch();
-      }
-    });
-  }, [data && data.ticker && data.ticker.length < 2 ? 50000 : 14000]);
+    doNext().then(refetch);
+  }, [timer]);
 
   useInterval(() => {
-    refetch();
+    if (data && data.ticker && data.ticker.length < 1) {
+      refetch();
+    }
   }, [2000]);
 
   const getTicker = (d) => {

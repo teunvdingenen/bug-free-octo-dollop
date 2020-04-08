@@ -70,7 +70,7 @@ ReactDOM.render((
     <BrowserRouter>
       <Switch>
         <Route path="/bericht" component={AddTicker}/>
-        <Route path="/ticker/:t" component={Ticker}/>
+        <Route path="/ticker/:token/:timer" component={Ticker}/>
         <Route exact path="/" component={Register}/>
       </Switch>
     </BrowserRouter>
