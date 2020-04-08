@@ -29,7 +29,9 @@
     "morgan": "^1.9.1",
     "rand-token": "^0.4.0",
     "request": "^2.88.0",
-    "validator": "^11.1.0"
+    "terser-webpack-plugin": "^2.3.5",
+    "validator": "^11.1.0",
+    "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
     "eslint": "^6.5.0",
