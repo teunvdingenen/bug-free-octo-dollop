@@ -3,7 +3,7 @@ const auth = require('./auth');
 
 module.exports = {
   Mutation: {
-  	register: (parent, args) => auth.register(parent, args),
+  	register: (parent, args) => auth.register(args.authInput),
     saveTicker: (parent, args, context) => {
       const v = (context.user && !context.user.shadow_banned
     	 ? ops.saveTicker(context.user, args.tickerInput)

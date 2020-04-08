@@ -20,7 +20,7 @@ const SAVE_TICKER = gql`
 	}
 `;
 
-export default function AddTicker() {
+export default function AddTicker({ location }) {
   const classes = useStyles();
   const [saveTicker] = useMutation(SAVE_TICKER);
   const [snackbar, setSnackbar] = React.useState({

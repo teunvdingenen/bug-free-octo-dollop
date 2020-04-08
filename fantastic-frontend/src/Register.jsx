@@ -21,7 +21,8 @@ const REGISTER = gql`
 
 export default function Register({ location }) {
   const classes = useStyles();
-  const [register, data] = useMutation(REGISTER);
+  const [register] = useMutation(REGISTER);
+  const [next, toNext] = React.useState(false);
 
   if (localStorage.getItem('fantastictoken') !== undefined
     && localStorage.getItem('fantastictoken') !== null) {
@@ -36,14 +37,16 @@ export default function Register({ location }) {
 
   return (
     <main className={classes.main}>
+      {next}
       <Paper className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Berichtje versturen
+          Voornaam
         </Typography>
         <Formik
+          initialValues={{}}
           onSubmit={({
             name,
-          }) => {
+          }, { setSubmitting }) => {
             register({
               variables: {
                 authInput: {
@@ -52,6 +55,8 @@ export default function Register({ location }) {
               },
             }).then(({ data: { register } }) => {
               localStorage.setItem('fantastictoken', register);
+              setSubmitting(false);
+              toNext(true);
             });
           }}
           validationSchema={Yup.object().shape({

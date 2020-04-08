@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { ObjectId } = require('mongodb');
 const { User } = require('./model');
 
 const APP_SECRET = 'dkl@#kjdf9kkdf1k3';
@@ -14,10 +15,15 @@ const getUser = (token) => {
   return User.findById(userId.userId);
 };
 
-const register = async (parent, args) => {
-  const user = await new User({
+const register = async (args) => {
+  const user = await User.findOneAndUpdate({
+    _id: new ObjectId(),
+  }, {
     name: args.name,
-  }).save();
+  }, {
+    upsert: true,
+    new: true,
+  }).exec();
   return jwt.sign({ userId: user.id }, APP_SECRET);
 };
 

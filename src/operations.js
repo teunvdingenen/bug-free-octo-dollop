@@ -26,10 +26,10 @@ const next = async (token) => {
   try {
     if (token === SAFETY_TOKEN) {
       const oldest = await Ticker.findOne().sort('createdAt').limit(1).exec();
-      console.log(oldest);
-      await Ticker.deleteOne({ _id: oldest._id }).exec();
+      await Ticker.deleteOne({ _id: oldest.id }).exec();
+      return true;
     }
-    return true;
+    return false;
   } catch (err) {
     return false;
   }
@@ -38,7 +38,7 @@ const next = async (token) => {
 
 const getTicker = async (count) => {
   try {
-  	return await Ticker.find({}).sort('-createdAt').limit(count).exec();
+  	return await Ticker.find({}).sort('createdAt').limit(count).exec();
   } catch (err) {
   	console.error(err);
   }
