@@ -45,7 +45,7 @@ export default function Ticker({ match }) {
     }
     const { ticker } = d;
     if (ticker.length > 0) {
-      return `${ticker[0].user.name}: ${ticker[0].value}`;
+      return `${ticker[0].user.name}: ${ticker[0].value}  --  `;
     }
     return `Jouw berichtje hier? Ga naar: ${url}`;
   };
