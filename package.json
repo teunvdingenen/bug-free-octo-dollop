@@ -1,0 +1,43 @@
+{
+  "name": "fantastic",
+  "version": "1.0.0",
+  "description": "Fantastic Stream utils",
+  "main": "app.js",
+  "scripts": {
+    "start": "node bin/www",
+    "heroku-postbuild": "cd client && npm install --dev && npm run build-prod",
+    "start-dev": "nodemon --watch public bin/www"
+  },
+  "engines": {
+    "node": ">=12.11.1",
+    "npm": ">=6.13.0"
+  },
+  "author": "Teun van Dingenen",
+  "dependencies": {
+    "apollo-server-express": "^2.9.4",
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.1",
+    "mongoose-autopopulate": "^0.9.1",
+    "morgan": "^1.9.1",
+    "rand-token": "^0.4.0",
+    "request": "^2.88.0",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
+  }
+}

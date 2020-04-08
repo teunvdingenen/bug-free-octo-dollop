@@ -1,0 +1,38 @@
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+type Query {
+	viewer: User
+	ticker(count: Int): [Ticker]
+	alert: String
+}
+
+input DefaultInput {
+	value: String!
+}
+
+input AuthInput {
+  name: String!
+}
+
+type Mutation {
+	register(authInput: AuthInput!): String
+	saveTicker(tickerInput: DefaultInput!): Int
+	saveAlert(alertInput: DefaultInput!): Boolean
+	next(token: String!): Boolean
+}
+
+type User {
+	id: ID
+	name: String
+	allowAlert: Boolean
+}
+
+type Ticker {
+	id: ID
+	value: String
+	created_at: String
+	user: User
+}
