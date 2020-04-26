@@ -1,11 +1,11 @@
 {
-  "name": "fantastic",
+  "name": "obsticker",
   "version": "1.0.0",
-  "description": "Fantastic Stream utils",
+  "description": "Online ticker editor",
   "main": "app.js",
   "scripts": {
     "start": "node bin/www",
-    "heroku-postbuild": "cd fantastic-frontend && npm install --dev && npm run build-prod",
+    "heroku-postbuild": "cd frontend && npm install --dev && npm run build-prod",
     "start-dev": "nodemon --watch public bin/www"
   },
   "engines": {

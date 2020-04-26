@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import useInterval from './useInterval';
 
-const url = 'fantasticfitness.herokuapp.com';
+const url = '';
 
 const TICKER_QUERY = gql`
 	query ticker($count: Int!) {
